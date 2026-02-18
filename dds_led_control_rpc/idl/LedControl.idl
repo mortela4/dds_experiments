@@ -1,0 +1,24 @@
+module led_control {
+    enum LedColor {
+        RED,
+        GREEN,
+        BLUE
+    };
+    
+    struct LedRequest {
+        LedColor color;
+        boolean state;  // true = ON, false = OFF
+        unsigned long request_id;
+    };
+    
+    struct LedResponse {
+        boolean success;
+        string message;
+        LedColor color;
+        boolean state;
+        unsigned long request_id;
+    };
+    
+    #pragma keylist LedRequest request_id
+    #pragma keylist LedResponse request_id
+};
